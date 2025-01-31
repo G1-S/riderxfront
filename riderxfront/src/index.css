@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes background-pulse {
+    0%, 100% {
+      background-color: #000000;
+    }
+    50% {
+      background-color: #ffffff;
+    }
+  }
+  
+  .animate-background-pulse {
+    animation: background-pulse 1s infinite;
+  }
