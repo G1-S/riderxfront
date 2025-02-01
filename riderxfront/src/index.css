@@ -4,13 +4,39 @@
 
 @keyframes background-pulse {
     0%, 100% {
-      background-color: #000000;
+      background-color: #81A3A7; 
     }
     50% {
-      background-color: #ffffff;
+      background-color: #C2D3DA;
     }
   }
   
   .animate-background-pulse {
-    animation: background-pulse 1s infinite;
+    animation: background-pulse 30s infinite; 
   }
+  .custom-bg-blue {
+    background-color: #C2D3DA;
+  }
+
+  .link-container {
+    position: relative;
+    display: inline-block; /* Necessário para o pseudo-elemento ::after funcionar corretamente */
+  }
+  
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: gray;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+  }
+  
+  .link-underline:hover::after {
+    width: 50%; /* Faz o sublinhado aparecer */
+  }
+
+  
