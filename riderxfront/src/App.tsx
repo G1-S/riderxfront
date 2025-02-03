@@ -1,4 +1,4 @@
-// App.tsx
+
 import React from 'react';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
@@ -7,6 +7,7 @@ import Cadastrarform from './components/cadastrar/Cadastrarform';
 import LoginForm from './components/login/Loginform';
 import Footer from "./components/footer/Footer";
 import SobreNos from "./components/sobrenos/SobreNos";
+
 
 
 const App: React.FC = () => {
@@ -25,6 +26,7 @@ const App: React.FC = () => {
     </BrowserRouter>
   );
 };
+
 
 export default App;
 
