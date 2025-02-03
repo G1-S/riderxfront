@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../index.css'; // Certifique-se de que o caminho está correto
+import '../../index.css'; 
 
 function Home() {
   return (
