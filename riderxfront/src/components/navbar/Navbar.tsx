@@ -1,6 +1,7 @@
 import React from 'react';
 import index from '../../index.css'
 import IconeRiderX from '../../assets/img/IconeRiderX.svg';
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   return (
@@ -11,11 +12,15 @@ const Navbar: React.FC = () => {
           <span className="font-bold text-gray-800 text-xl" style={{ fontWeight: 900 }}>RiderX</span> {/* Texto mais grosso e alto */}
         </div>
         <div className="flex space-x-10">
-          <a href="#home" className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline">Home</a>
+          <Link
+          to="/home" 
+          className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline">Home</Link>
           <a href="#pesquisar" className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline">Pesquise sua viagem</a>
           <a href="#sobre" className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline">Sobre nós</a>
         </div>
-        <button className="bg-davysgray text-white rounded-lg text-center hover:bg-gray-600 transform" style={{ width: '195px', height: '35px' }}>Login</button> {/* Estilos embutidos */}
+        <Link to='/Login'>
+          <button className="bg-davysgray text-white rounded-lg text-center hover:bg-gray-600 transform" style={{ width: '195px', height: '35px' }}>Login</button> {/* Estilos embutidos */}
+        </Link>
       </div>
     </div>
   );
