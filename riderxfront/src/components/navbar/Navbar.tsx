@@ -12,11 +12,16 @@ const Navbar: React.FC = () => {
           <span className="font-bold text-gray-800 text-xl" style={{ fontWeight: 900 }}>RiderX</span>
         </div>
         <div className="flex space-x-10">
-          <Link to="/home" className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline">Home</Link>
-          <a href="/pesquisar" className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline">Pesquise sua viagem</a>
+          <Link
+          to="/home" 
+          className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline ">Home</Link>
+          <a href="#pesquisar" className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline">Pesquise sua viagem</a>
           <Link to="/sobrenos" className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline">Sobre nós</Link>
         </div>
-        <button className="bg-davysgray text-white rounded-lg text-center hover:bg-gray-600 transform" style={{ width: '195px', height: '35px' }}>Login</button> 
+        <Link 
+          to='/Login'>
+          <button className="bg-davysgray text-white rounded-lg text-center hover:bg-gray-600 transform" style={{ width: '195px', height: '35px' }}>Login</button> {/* Estilos embutidos */}
+        </Link>
       </div>
     </div>
   );
