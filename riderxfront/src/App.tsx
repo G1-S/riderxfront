@@ -5,6 +5,9 @@ import Navbar from './components/navbar/Navbar';
 import Home from './pages/home/Home';
 import Cadastrarform from './components/cadastrar/Cadastrarform';
 import LoginForm from './components/login/Loginform';
+import Footer from "./components/footer/Footer";
+import SobreNos from "./components/sobrenos/SobreNos";
+
 
 const App: React.FC = () => {
   return (
@@ -13,8 +16,10 @@ const App: React.FC = () => {
       <main className='min-h-screen'>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home/>} />
         <Route path="/cadastro" element={<Cadastrarform />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/sobrenos" element={<SobreNos/>} />
       </Routes>
       </main>
     </BrowserRouter>
@@ -22,3 +27,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+

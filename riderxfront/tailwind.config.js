@@ -6,6 +6,13 @@ export default {
   ],
   theme: {
     extend: {
+
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+        merriweather: ['Merriweather', 'serif'],
+        nunito: ['Nunito', 'sans-serif'],
+      },
+
       colors:{
         davysgray : '#585A56',
         raisinblack :'#172424',
@@ -13,8 +20,8 @@ export default {
         columbiablue : '#C2D3DA',
         weldonblue : '#81A3A7',
       }
+
     },
   },
   plugins: [],
 }
-
