@@ -10,6 +10,7 @@ const Cadastrarform: React.FC = () => {
     password: '',
     confirmPassword: '',
     role: 'passenger',
+    photoUrl: '', // Adicione um novo campo de estado para o URL da foto
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -26,93 +27,93 @@ const Cadastrarform: React.FC = () => {
   };
 
   return (
-    <div className=" flex items-center justify-center bg-columbiablue pt-32 pb-32">
+    <div className="flex items-center justify-center bg-columbiablue pt-32 pb-8">{/* # POG */}
       <form onSubmit={handleSubmit} className="animate-background-pulse p-8 rounded-lg max-w-md w-full">
-        <h1 className="text-2xl font-bold mb-4">Junte-se a nós!</h1>
+        <h1 className="text-2xl font-bold mb-4 text-center">Junte-se a nós!</h1>
         <label className="block mb-4">
-          Nome:
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full p-2 border rounded mt-1"
+            className="w-full p-2 border rounded-lg mt-1"
+            placeholder="Digite seu nome"
           />
         </label>
         <label className="block mb-4">
-          E-mail:
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-2 border rounded mt-1"
+            className="w-full p-2 border rounded-lg mt-1"
+            placeholder="Digite seu e-mail"
           />
         </label>
         <label className="block mb-4">
-          Telefone:
           <input
             type="tel"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full p-2 border rounded mt-1"
+            className="w-full p-2 border rounded-lg mt-1"
+            placeholder="Digite seu telefone"
           />
         </label>
         <label className="block mb-4">
-          Foto:
-          <input type="file" name="photo" className="w-full p-2 border rounded mt-1" />
+          <input
+            type="url"
+            name="photoUrl"
+            value={formData.photoUrl}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-lg mt-1"
+            placeholder="Digite o URL da sua foto"
+          />
         </label>
         <div className="mb-4">
-          <span className="block mb-2">Role:</span>
-          <label className="mr-4">
-            <input
-              type="radio"
-              name="role"
-              value="passenger"
-              checked={formData.role === 'passenger'}
-              onChange={handleChange}
-              className="mr-2"
-            />
-            Passageiro
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="role"
-              value="driver"
-              checked={formData.role === 'driver'}
-              onChange={handleChange}
-              className="mr-2"
-            />
-            Motorista
-          </label>
+          <span className="block mb-2"></span>
+          <div className="flex space-x-4">
+            <button
+              type="button"
+              className={`p-2 rounded-lg w-full ${formData.role === 'passenger' ? 'bg-davysgray text-white' : 'bg-white border border-gray-300'}`}
+              onClick={() => setFormData({ ...formData, role: 'passenger' })}
+            >
+              Passageiro
+            </button>
+            <button
+              type="button"
+              className={`p-2 rounded-lg w-full ${formData.role === 'driver' ? 'bg-davysgray text-white' : 'bg-white border border-gray-300'}`}
+              onClick={() => setFormData({ ...formData, role: 'driver' })}
+            >
+              Motorista
+            </button>
+          </div>
         </div>
         <label className="block mb-4">
-          Senha:
           <input
             type="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full p-2 border rounded mt-1"
+            className="w-full p-2 border rounded-lg mt-1"
+            placeholder="Digite sua senha"
           />
         </label>
         <label className="block mb-4">
-          Confirmação de Senha:
           <input
             type="password"
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={handleChange}
-            className="w-full p-2 border rounded mt-1"
+            className="w-full p-2 border rounded-lg mt-1"
+            placeholder="Confirme sua senha"
           />
         </label>
-        <button type="submit" className="w-full bg-davysgray text-white p-2 rounded text-center hover:bg-gray-600 transform hover:scale-105 transition-transform">
+        <button type="submit" className="w-full bg-davysgray text-white p-2 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform">
           Cadastre-se
         </button>
         <p className="mt-4 text-center">
-          Já é membro? <Link to= '/login' className="text-blue-500">Entre</Link>.
+          Já é membro? <Link to='/login' className="text-blue-500">Entre</Link>.
         </p>
       </form>
     </div>

@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
         <div className="flex space-x-10">
           <Link
           to="/home" 
-          className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline">Home</Link>
+          className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline ">Home</Link>
           <a href="#pesquisar" className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline">Pesquise sua viagem</a>
           <a href="#sobre" className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline">Sobre nós</a>
         </div>

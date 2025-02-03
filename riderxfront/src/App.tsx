@@ -10,11 +10,13 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Navbar/>
+      <main className='min-h-screen'>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cadastro" element={<Cadastrarform />} />
         <Route path="/login" element={<LoginForm />} />
       </Routes>
+      </main>
     </BrowserRouter>
   );
 };

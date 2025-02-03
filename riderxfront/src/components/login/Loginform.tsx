@@ -16,31 +16,31 @@ const LoginForm: React.FC = () => {
   return (
     <div className="bg-columbiablue h-screen flex items-center justify-center"> {/* Classes Tailwind para centralizar */}
       <form onSubmit={handleSubmit} className="animate-background-pulse p-8 rounded-lg max-w-md w-full">
-        <h2 className="text-xl font-bold mb-4">Login</h2>
+        <h2 className="text-xl font-bold mb-4 text-center">Login</h2>
         <div className="mb-4">
           <label className="block mb-2">
-            E-mail:
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded-lg mt-1"
+              placeholder="Digite seu e-mail"
             />
           </label>
         </div>
         <div className="mb-4">
           <label className="block mb-2">
-            Senha:
             <input
               type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded-lg mt-1"
+              placeholder="Digite sua senha"
             />
             <button type="button" onClick={() => setShowPassword(!showPassword)} className="text-sm text-blue-500 mt-2">
-              
+              {showPassword ? 'Esconder senha' : 'Mostrar senha'}
             </button>
           </label>
         </div>
@@ -55,10 +55,9 @@ const LoginForm: React.FC = () => {
             Lembre-se
           </label>
         </div>
-        <button type="submit" className="w-full bg-davysgray text-white p-2 rounded text-center hover:bg-gray-600 transform">
+        <button type="submit" className="w-full bg-davysgray text-white p-2 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform">
           Entrar
         </button>
-        
         <p className="mt-4 text-center">
           Não tem uma conta? <Link to='/cadastro' className="text-blue-500">Crie a sua.</Link>
         </p>
