@@ -1,0 +1,36 @@
+import Footer from "../../components/footer/Footer";
+import SobreNos from "../../components/sobrenos/SobreNos";
+import { Link } from "react-router-dom";
+
+function Home() {
+    return (
+        <>
+
+            <div className="bg-[#C2D3DA] flex justify-center items-center h-screen p-10">
+                <div className='container grid grid-cols-2 items-center'>
+                    {/* Texto */}
+                    <div className="flex flex-col gap-4">
+                        <h2 className='text-5xl font-nunito font-bold text-gray-900'>
+                            Transforme sua Jornada, compartilhe o caminho
+                        </h2>
+                        <p className='text-lg font-merriweather text-gray-700'>
+                            Cada viagem é uma oportunidade de economizar e colaborar.
+                            Compartilhe o trajeto,
+                            divida o custo e faça parte de uma mobilidade mais inteligente e sustentável
+                        </p>
+                        <Link to='/cadastro'>
+                            <button
+                                className="bg-davysgray text-white rounded-lg text-center hover:bg-gray-600 transform" style={{ width: '195px', height: '35px' }}>
+                                Entre para a RiderX
+                            </button>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+            <SobreNos />
+            <Footer />
+        </>
+    )
+}
+
+export default Home;
