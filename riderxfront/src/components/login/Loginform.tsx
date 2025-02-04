@@ -23,7 +23,7 @@ if (!authContext) {
 
   useEffect(() => {
     if (usuario && usuario.token !== "") {
-      navigate('/home');
+      navigate('/viagem');
     }
   }, [usuario, navigate]);
 
@@ -87,7 +87,7 @@ if (!authContext) {
         </div>
         <button type="submit" 
          className="w-full bg-davysgray text-white p-2 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform">
-         <Link to='/viagem'> Entrar</Link>
+          Entrar
         </button>
         <p className="mt-4 text-center">
           Não tem uma conta? <Link to='/cadastro' className="text-blue-500">Crie a sua.</Link>

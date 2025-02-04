@@ -58,21 +58,39 @@ const Navbar: React.FC = () => {
             </button>
           )}
         </div>
-        {usuario ?(
-          <Link to='/Login'>
+        {location.pathname === '/cadastro'&& (
+            <Link to='/Login'>
             <button className="bg-davysgray text-white rounded-lg text-center hover:bg-gray-600 transform" style={{ width: '195px', height: '35px' }}>
               Login
             </button>
           </Link>
-        ) : (
-          <button
+          )}
+          {location.pathname === '/home'&& (
+            <Link to='/Login'>
+            <button className="bg-davysgray text-white rounded-lg text-center hover:bg-gray-600 transform" style={{ width: '195px', height: '35px' }}>
+              Login
+            </button>
+          </Link>
+          )}
+          {location.pathname === '/Login'&& (
+            <Link to='/Login'>
+            <button className="bg-davysgray text-white rounded-lg text-center hover:bg-gray-600 transform" style={{ width: '195px', height: '35px' }}>
+              Login
+            </button>
+          </Link>
+          )}
+          {location.pathname === '/viagem'&& (
+            <button
             onClick={logout}
             className="bg-davysgray text-white rounded-lg text-center hover:bg-gray-600 transform"
             style={{ width: '195px', height: '35px' }}
           >
             Logoff
           </button>
-        )}
+          )}
+        
+          
+        
       </div>
     </div>
   );
