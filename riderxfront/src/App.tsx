@@ -8,11 +8,12 @@ import LoginForm from './components/login/Loginform';
 import SobreNos from "./components/sobrenos/SobreNos";
 import ListaCorridas from './components/corrida/listarcorridas/ListarCorridas';
 import { AuthProvider } from './contexts/AuthContext';
-
+import DeletarCorrida from "../src/components/corrida/deletarcorrida/DeletarCorrida"
 
 const App: React.FC = () => {
   return (
     <>
+    
       <AuthProvider>
         <BrowserRouter>
           <Navbar/>
@@ -24,6 +25,7 @@ const App: React.FC = () => {
             <Route path="/login" element={<LoginForm />} />
             <Route path="/sobrenos" element={<SobreNos/>} />
             <Route path="/viagem" element={<ListaCorridas/>}/>
+            <Route path="/deletarcorrida/:id" element={<DeletarCorrida />} />
           </Routes>
           </main>
         </BrowserRouter>
