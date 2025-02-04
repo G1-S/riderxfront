@@ -9,5 +9,7 @@ export default interface Corrida {
     distancia: string;
    tipoPagamento: string;
     motorista_Id: Usuario;
+    dataViagem: string;
+    horaViagem: string;
 }
     
