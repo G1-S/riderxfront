@@ -3,7 +3,7 @@ export default interface Usuario {
     nome: string;
     usuario: string;
     telefone: string;
-    foto: string;
+    foto?: string;
     senha: string;
     carroModelo?: string | null;
     carroCor?: string | null;

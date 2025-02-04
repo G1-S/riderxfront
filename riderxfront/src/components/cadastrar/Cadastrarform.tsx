@@ -1,19 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import '../../index.css'; 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { ThreeDots } from 'react-loader-spinner';
+import Usuario from '../../models/Usuario';
+import { cadastrarUsuario } from '../../services/Service';
+import { ToastAlerta } from '../../utils/ToastAlerta';
 
 const Cadastrarform: React.FC = () => {
+  const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const [formData, setFormData] = useState({
-    name: '',
+    id: 0,
+    nome: '',
     email: '',
     phone: '',
-    password: '',
+    senha: '',
     confirmPassword: '',
     role: 'passenger',
-    photoUrl: '', // Adicione um novo campo de estado para o URL da foto
+    foto: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  useEffect(() => {
+    if (formData.id !== 0) {
+      navigate('/login');
+    }
+  }, [formData]);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -21,20 +36,34 @@ const Cadastrarform: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
+
+    if (formData.confirmPassword === formData.senha && formData.senha.length >= 8) {
+      setIsLoading(true);
+      try {
+        await cadastrarUsuario('/usuarios/cadastrar', formData, setFormData);
+        ToastAlerta('Usuário cadastrado com sucesso!', 'sucesso');
+      } catch (error) {
+        ToastAlerta('Erro ao cadastrar o usuário!', 'erro');
+      }
+    } else {
+      ToastAlerta('Dados estão inconsistentes. Verifique as informações do cadastro', 'erro');
+      setFormData({ ...formData, senha: '', confirmPassword: '' });
+    }
+
+    setIsLoading(false);
   };
 
   return (
-    <div className="flex items-center justify-center bg-columbiablue pt-32 pb-8">{/* # POG */}
+    <div className="flex items-center justify-center bg-columbiablue pt-32 pb-8">
       <form onSubmit={handleSubmit} className="animate-background-pulse p-8 rounded-lg max-w-md w-full">
         <h1 className="text-2xl font-bold mb-4 text-center">Junte-se a nós!</h1>
         <label className="block mb-4">
           <input
             type="text"
-            name="name"
-            value={formData.name}
+            name="nome"
+            value={formData.nome}
             onChange={handleChange}
             className="w-full p-2 border rounded-lg mt-1"
             placeholder="Digite seu nome"
@@ -63,8 +92,8 @@ const Cadastrarform: React.FC = () => {
         <label className="block mb-4">
           <input
             type="url"
-            name="photoUrl"
-            value={formData.photoUrl}
+            name="foto"
+            value={formData.foto}
             onChange={handleChange}
             className="w-full p-2 border rounded-lg mt-1"
             placeholder="Digite o URL da sua foto"
@@ -92,8 +121,8 @@ const Cadastrarform: React.FC = () => {
         <label className="block mb-4">
           <input
             type="password"
-            name="password"
-            value={formData.password}
+            name="senha"
+            value={formData.senha}
             onChange={handleChange}
             className="w-full p-2 border rounded-lg mt-1"
             placeholder="Digite sua senha"
@@ -110,7 +139,20 @@ const Cadastrarform: React.FC = () => {
           />
         </label>
         <button type="submit" className="w-full bg-davysgray text-white p-2 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform">
-          Cadastre-se
+          {isLoading ? (
+            <ThreeDots
+              visible={true}
+              height="25"
+              width="60"
+              color="#1E3A8A"
+              radius="9"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+            />
+          ) : (
+            <span>Cadastre-se</span>
+          )}
         </button>
         <p className="mt-4 text-center">
           Já é membro? <Link to='/Login' className="text-blue-500">Entre</Link>.
