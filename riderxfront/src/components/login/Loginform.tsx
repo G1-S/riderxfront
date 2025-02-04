@@ -1,28 +1,55 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import '../../index.css'; 
-const LoginForm: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import UsuarioLogin from '../../models/UsuarioLogin';
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+
+const LoginForm: React.FC = () => {
+  const navigate = useNavigate();
+  const { usuario, handleLogin} = useContext(AuthContext)
+
+  const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({ usuario: '', senha: '' });
+  const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar senha
+  const [rememberMe, setRememberMe] = useState(false); // Estado para "Lembre-se"
+  const authContext = useContext(AuthContext);
+
+if (!authContext) {
+  throw new Error('AuthContext não encontrado. Verifique se o AuthProvider está corretamente configurado.');
+}
+
+const { usuario, handleLogin } = authContext;
+
+
+  useEffect(() => {
+    if (usuario && usuario.token !== "") {
+      navigate('/home');
+    }
+  }, [usuario, navigate]);
+
+  function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+    setUsuarioLogin({
+      ...usuarioLogin,
+      [e.target.name]: e.target.value
+    });
+  }
+
+  function login(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
-   
-    console.log({ email, password, rememberMe });
-  };
+    handleLogin(usuarioLogin);
+  }
 
   return (
     <div className="bg-columbiablue h-screen flex items-center justify-center"> {/* Classes Tailwind para centralizar */}
-      <form onSubmit={handleSubmit} className="animate-background-pulse p-8 rounded-lg max-w-md w-full">
+      <form onSubmit={login} className="animate-background-pulse p-8 rounded-lg max-w-md w-full">
         <h2 className="text-xl font-bold mb-4 text-center">Login</h2>
         <div className="mb-4">
           <label className="block mb-2">
             <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              name="usuario"
+              value={usuarioLogin.usuario}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
               required
               className="w-full p-2 border rounded-lg mt-1"
               placeholder="Digite seu e-mail"
@@ -33,8 +60,9 @@ const LoginForm: React.FC = () => {
           <label className="block mb-2">
             <input
               type={showPassword ? 'text' : 'password'}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="senha"
+              value={usuarioLogin.senha}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
               required
               className="w-full p-2 border rounded-lg mt-1"
               placeholder="Digite sua senha"
@@ -55,7 +83,8 @@ const LoginForm: React.FC = () => {
             Lembre-se
           </label>
         </div>
-        <button type="submit" className="w-full bg-davysgray text-white p-2 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform">
+        <button type="submit" 
+         className="w-full bg-davysgray text-white p-2 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform">
           Entrar
         </button>
         <p className="mt-4 text-center">
@@ -64,6 +93,6 @@ const LoginForm: React.FC = () => {
       </form>
     </div>
   );
-};
+}
 
 export default LoginForm;

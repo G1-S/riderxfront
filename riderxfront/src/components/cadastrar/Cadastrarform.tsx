@@ -113,7 +113,7 @@ const Cadastrarform: React.FC = () => {
           Cadastre-se
         </button>
         <p className="mt-4 text-center">
-          Já é membro? <Link to='/login' className="text-blue-500">Entre</Link>.
+          Já é membro? <Link to='/Login' className="text-blue-500">Entre</Link>.
         </p>
       </form>
     </div>
