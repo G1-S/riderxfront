@@ -5,20 +5,13 @@ import UsuarioLogin from '../models/UsuarioLogin';
 
 
 interface AuthContext {
-  usuario: {
-    id?: number;
-    nome?: string;
-    usuario: string;
-    senha: string;
-    foto?: string;
-    token?: string;
-  };
+  usuario: UsuarioLogin
   handleLogin: (usuarioLogin: UsuarioLogin) => Promise<void>;
   handleLogout: () => void;
   isLoading: boolean;
 }
 
-export const AuthContext = createContext<AuthContext | undefined>(undefined);
+export const AuthContext = createContext({} as AuthContext)
 
 interface AuthProviderProps {
   children: ReactNode;

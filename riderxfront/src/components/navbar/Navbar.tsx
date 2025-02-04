@@ -58,7 +58,13 @@ const Navbar: React.FC = () => {
             </button>
           )}
         </div>
-        {usuario ? (
+        {usuario ?(
+          <Link to='/Login'>
+            <button className="bg-davysgray text-white rounded-lg text-center hover:bg-gray-600 transform" style={{ width: '195px', height: '35px' }}>
+              Login
+            </button>
+          </Link>
+        ) : (
           <button
             onClick={logout}
             className="bg-davysgray text-white rounded-lg text-center hover:bg-gray-600 transform"
@@ -66,12 +72,6 @@ const Navbar: React.FC = () => {
           >
             Logoff
           </button>
-        ) : (
-          <Link to='/Login'>
-            <button className="bg-davysgray text-white rounded-lg text-center hover:bg-gray-600 transform" style={{ width: '195px', height: '35px' }}>
-              Login
-            </button>
-          </Link>
         )}
       </div>
     </div>

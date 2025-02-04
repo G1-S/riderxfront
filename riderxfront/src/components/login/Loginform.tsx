@@ -1,8 +1,9 @@
 import '../../index.css'; 
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthContext';
+import {AuthContext} from '../../contexts/AuthContext.tsx'
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import UsuarioLogin from '../../models/UsuarioLogin';
+
 
 
 const LoginForm: React.FC = () => {
@@ -18,7 +19,6 @@ if (!authContext) {
   throw new Error('AuthContext não encontrado. Verifique se o AuthProvider está corretamente configurado.');
 }
 
-const { usuario, handleLogin } = authContext;
 
 
   useEffect(() => {
@@ -36,7 +36,9 @@ const { usuario, handleLogin } = authContext;
 
   function login(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
+    console.log("Chegou aqui!!");
     handleLogin(usuarioLogin);
+    
   }
 
   return (
@@ -85,7 +87,7 @@ const { usuario, handleLogin } = authContext;
         </div>
         <button type="submit" 
          className="w-full bg-davysgray text-white p-2 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform">
-          Entrar
+         <Link to='/viagem'> Entrar</Link>
         </button>
         <p className="mt-4 text-center">
           Não tem uma conta? <Link to='/cadastro' className="text-blue-500">Crie a sua.</Link>
