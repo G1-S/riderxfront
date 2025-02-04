@@ -1,3 +1,5 @@
+import Footer from "../../components/footer/Footer";
+import SobreNos from "../../components/sobrenos/SobreNos";
 import homeimg from "../src/assets/image/homeimg.png";
 import { Link } from "react-router-dom";
 
@@ -19,8 +21,7 @@ function Home() {
                     </p>
                     <Link to='/cadastro'>
                         <button
-                            className="font-nunito mt-6 px-4 py-1 bg-[#585A56] hover:bg-[#272424]
-                            text-white rounded-lg shadow-lg transition mx-auto opacity-70">
+                            className="bg-davysgray text-white rounded-lg text-center hover:bg-gray-600 transform" style={{ width: '195px', height: '35px' }}>
                             Entre para a RiderX
                         </button>
                     </Link>
@@ -28,10 +29,12 @@ function Home() {
 
                   {/* Imagem */}
                   <div className="flex justify-center relative">
-                      <img src = "..\src\assets\image\homeimg.png" alt="Passageira entrando no carro" className='w-3/4' />
+                      <img src = "..\src\assets\image\homeimg.png" alt="Passageira entrando no carro" className='w-100' />
                   </div>
               </div>
           </div>
+          <SobreNos/>
+           <Footer/>
       </>
   )
 }

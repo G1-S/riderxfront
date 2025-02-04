@@ -15,37 +15,32 @@ function CardCorrida() {
     };
 
     return (
-        <div className='bg-white shadow-md rounded-lg p-4 flex flex-col justify-between'>
-            <div>
-                <div className="flex w-full bg-teal-500 py-2 px-4 items-center gap-4">
-                    <img
-                        src={corrida.motorista?.foto}
-                        className='h-12 rounded-full'
-                        alt={corrida.motorista?.nome}
-                    />
-                    <h3 className='text-lg font-bold text-center uppercase text-white'>
-                        {corrida.motorista?.nome}
-                    </h3>
-                </div>
-                <div className='p-4 bg-gray-100'>
-                    <h4 className='text-lg font-semibold uppercase text-teal-700'>{corrida.destino}</h4>
-                    <p><strong>Origem:</strong> {corrida.origem}</p>
-                    <p><strong>Vagas:</strong> {corrida.vagas}</p>
-                    <p><strong>Data:</strong> {new Intl.DateTimeFormat(undefined, {
-                        dateStyle: 'full',
-                        timeStyle: 'medium',
-                    }).format(corrida.data)}</p>
-                </div>
+        <div className='bg-antiflashwhite shadow-md rounded-lg overflow-hidden'>
+            <div className="flex w-full bg-antiflashwhite py-4 px-6 items-center gap-4">
+                <img
+                    src={corrida.motorista?.foto}
+                    className='h-16 w-16 rounded-full'
+                    alt={corrida.motorista?.nome}
+                />
+                <h3 className='text-xl font-bold text-center uppercase text-white'>
+                    {corrida.motorista?.nome}
+                </h3>
             </div>
-            <div className="flex">
+            <div className='p-6 bg-columbiablue-100'>
+                <h4 className='text-lg font-semibold uppercase text-teal-700'>{corrida.destino}</h4>
+                <p className='mt-2'><strong>Origem:</strong> {corrida.origem}</p>
+                <p className='mt-2'><strong>Vagas:</strong> {corrida.vagas}</p>
+                <p className='mt-2'><strong>Data:</strong> {new Intl.DateTimeFormat(undefined, {
+                    dateStyle: 'full',
+                    timeStyle: 'medium',
+                }).format(corrida.data)}</p>
+            </div>
+            <div className="flex border-t">
                 <Link to={`/editarcorrida/${corrida.id}`} 
-                    className='w-full text-white bg-teal-500 hover:bg-teal-700 flex items-center justify-center py-2'>
-                    <button>Editar</button>
+                    className='w-full text-white bg-teal-500 hover:bg-teal-700 flex items-center justify-center py-3 border-r'>
+                    Reservar
                 </Link>
-                <Link to={`/deletarcorrida/${corrida.id}`} 
-                    className='w-full text-white bg-red-500 hover:bg-red-700 flex items-center justify-center py-2'>
-                    <button>Deletar</button>
-                </Link>
+                
             </div>
         </div>
     );

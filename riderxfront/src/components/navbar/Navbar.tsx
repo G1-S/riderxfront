@@ -1,9 +1,11 @@
 import React from 'react';
-import index from '../../index.css'
+import { useLocation, Link } from 'react-router-dom';
 import IconeRiderX from '../../assets/img/IconeRiderX.svg';
-import { Link } from 'react-router-dom';
+import '../../index.css';
 
 const Navbar: React.FC = () => {
+  const location = useLocation();
+
   return (
     <div className="fixed top-0 left-0 right-0 z-20 animate-background-pulse">
       <div className="container mx-auto flex justify-between items-center py-1 px-6"> 
@@ -13,14 +15,24 @@ const Navbar: React.FC = () => {
         </div>
         <div className="flex space-x-10">
           <Link
-          to="/home" 
-          className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline ">Home</Link>
-          <a href="#pesquisar" className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline">Pesquise sua viagem</a>
-          <Link to="/sobrenos" className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline">Sobre nós</Link>
+            to="/home" 
+            className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline"
+          >
+            Home
+          </Link>
+          {location.pathname === '/home' && (
+            <button 
+              onClick={() => document.getElementById('sobrenos').scrollIntoView({ behavior: 'smooth' })}
+              className="text-gray-800 hover:text-gray-600 transform hover:-translate-y-1 transition duration-500 link-underline"
+            >
+              Sobre Nós
+            </button>
+          )}
         </div>
-        <Link 
-          to='/Login'>
-          <button className="bg-davysgray text-white rounded-lg text-center hover:bg-gray-600 transform" style={{ width: '195px', height: '35px' }}>Login</button> {/* Estilos embutidos */}
+        <Link to='/Login'>
+          <button className="bg-davysgray text-white rounded-lg text-center hover:bg-gray-600 transform" style={{ width: '195px', height: '35px' }}>
+            Login
+          </button>
         </Link>
       </div>
     </div>

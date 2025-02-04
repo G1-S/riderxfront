@@ -1,6 +1,6 @@
 const SobreNos = () => {
     return (
-      <div className="flex flex-col items-center justify-center w-full p-10" style={{ backgroundColor: '#F1F3F2' }}>
+      <div id="sobrenos" className="flex flex-col items-center justify-center w-full p-10" style={{ backgroundColor: '#F1F3F2' }}>
      
         <section className="flex flex-col items-center justify-center max-w-5xl w-full mt-10 mb-20">
           <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Sobre nós</h2>

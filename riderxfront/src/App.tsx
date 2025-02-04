@@ -7,6 +7,7 @@ import Cadastrarform from './components/cadastrar/Cadastrarform';
 import LoginForm from './components/login/Loginform';
 import Footer from "./components/footer/Footer";
 import SobreNos from "./components/sobrenos/SobreNos";
+import ListaCorridas from './components/corrida/listarcorridas/ListarCorridas';
 
 
 
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <Route path="/cadastro" element={<Cadastrarform />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/sobrenos" element={<SobreNos/>} />
+        <Route path="/viagem" element={<ListaCorridas/>}/>
       </Routes>
       </main>
     </BrowserRouter>
